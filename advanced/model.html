@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Model | Veno</title>
+    <meta name="description" content="Vue and Vite Dev Kit">
+    <link rel="stylesheet" href="/assets/style.2b93322c.css">
+    <link rel="modulepreload" href="/assets/Home.3dd55162.js">
+    <link rel="modulepreload" href="/assets/app.e1cf623f.js">
+    <link rel="modulepreload" href="/assets/advanced_model.md.a680f748.lean.js">
+    
+    <link rel="icon" type="image/svg+xml" href="/logo.png">
+  <meta name="twitter:title" content="Model | Veno">
+  <meta property="og:title" content="Model | Veno">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="nav-bar" data-v-5f594917><div class="sidebar-button" data-v-5f594917><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div><a class="nav-bar-title" href="/" aria-label="Veno, back to home" data-v-5f594917 data-v-100925b7><img class="logo" src="/logo.png" alt="Logo" data-v-100925b7> Veno</a><div class="flex-grow" data-v-5f594917></div><div class="nav" data-v-5f594917><nav class="nav-links" data-v-5f594917 data-v-a32cf202><!--[--><div class="item" data-v-a32cf202><div class="nav-link" data-v-a32cf202 data-v-c15a9f08><a class="item" href="/guide/introduction" data-v-c15a9f08>文档 <!----></a></div></div><div class="item" data-v-a32cf202><div class="nav-link" data-v-a32cf202 data-v-c15a9f08><a class="item" href="/config/" data-v-c15a9f08>配置 <!----></a></div></div><!--]--><!----><!----></nav></div><!--[--><!--]--></header><aside class="sidebar" data-v-26e9480e><nav class="nav-links nav" data-v-26e9480e data-v-a32cf202><!--[--><div class="item" data-v-a32cf202><div class="nav-link" data-v-a32cf202 data-v-c15a9f08><a class="item" href="/guide/introduction" data-v-c15a9f08>文档 <!----></a></div></div><div class="item" data-v-a32cf202><div class="nav-link" data-v-a32cf202 data-v-c15a9f08><a class="item" href="/config/" data-v-c15a9f08>配置 <!----></a></div></div><!--]--><!----><!----></nav><!--[--><!--]--><ul class="sidebar-links" data-v-26e9480e><!--[--><li class="sidebar-link"><p class="sidebar-link-item">起步</p><ul class="sidebar-links"><li class="sidebar-link"><a class="sidebar-link-item" href="/guide/introduction">Veno是什么</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="/guide/start">快速上手</a><!----></li></ul></li><li class="sidebar-link"><p class="sidebar-link-item">核心</p><ul class="sidebar-links"><li class="sidebar-link"><a class="sidebar-link-item" href="/core/router">路由</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="/core/mpa">多页应用</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="/core/mock">Mock 数据</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="/core/model-setup">Model Setup</a><!----></li></ul></li><!--]--></ul><!--[--><!--]--></aside><div class="sidebar-mask"></div><main class="page" data-v-25a2faf4><div class="container" data-v-25a2faf4><!--[--><!--]--><div style="position:relative;" class="content" data-v-25a2faf4><div><h1 id="model" tabindex="-1">Model <a class="header-anchor" href="#model" aria-hidden="true">#</a></h1><h2 id="组件与状态分离" tabindex="-1">组件与状态分离 <a class="header-anchor" href="#组件与状态分离" aria-hidden="true">#</a></h2><p>如果你喜欢组件与状态分离, 可以使用<strong>createModel</strong>来创建一个model</p><p>model可以被任意组件引用, 在组件间共享状态</p><h2 id="createmodel" tabindex="-1">createModel <a class="header-anchor" href="#createmodel" aria-hidden="true">#</a></h2><p>createModel的参数是个函数, 返回一个reactive的model</p><div class="language-js"><pre><code><span class="token comment">// profileModel.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createModel<span class="token punctuation">,</span> useFetch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;vue-model-lite&#39;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> computed<span class="token punctuation">,</span> ref <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;vue&#39;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> photoModel <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;./photoModel&#39;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> profileModel <span class="token operator">=</span> <span class="token function">createModel</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 可以引用其他model</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> getPhoto <span class="token punctuation">}</span> <span class="token operator">=</span> photoModel<span class="token punctuation">;</span>
+
+    <span class="token comment">// 可以使用hooks</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> data <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useFetch</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">&#39;https://profile&#39;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 可以定义计算属性</span>
+    <span class="token keyword">const</span> avatar <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> data<span class="token punctuation">.</span>value<span class="token operator">?.</span>avatar <span class="token operator">??</span> <span class="token string">&#39;&#39;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 用户自定义的变量</span>
+    <span class="token keyword">const</span> userState <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">&#39;&#39;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 用户自定义的方法</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">func</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        avatar<span class="token punctuation">,</span>
+        getPhoto<span class="token punctuation">,</span>
+        func<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre></div><div class="language-vue"><pre><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">:src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>profileModel.avatar<span class="token punctuation">&quot;</span></span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>profileModel.getPhoto<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> profileModel <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;./profileModel&#39;</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> isReactive <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;vue&#39;</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">isReactive</span><span class="token punctuation">(</span>profileModel<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="选项式-api" tabindex="-1">选项式 API <a class="header-anchor" href="#选项式-api" aria-hidden="true">#</a></h2><p>对选项式API, 可以通过计算属性使用model</p><div class="language-vue"><pre><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">:src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>profileModel.avatar<span class="token punctuation">&quot;</span></span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>profileModel.getPhoto<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> profileModel <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;./profileModel&#39;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+	<span class="token literal-property property">computed</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token function">profileModel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> profileModel<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="共享状态" tabindex="-1">共享状态 <a class="header-anchor" href="#共享状态" aria-hidden="true">#</a></h2><p>model独立于组件之外，vue-model-lite内部会创建一个Map来缓存model,</p><p>所以你在任意多组件之中引用同一个model, 返回的都是同一份数据</p><div class="tip custom-block"><p class="custom-block-title">提示</p><ul><li>如果model里useFetch是auto, 在import时就会发起请求</li></ul></div><h2 id="devtools支持" tabindex="-1">DevTools支持 <a class="header-anchor" href="#devtools支持" aria-hidden="true">#</a></h2><p>createModel只是语法糖, 最终返回的都是reactive对象, 可以原生被Vue Devtools支持</p></div></div><footer class="page-footer" data-v-25a2faf4 data-v-a9294842><div class="edit" data-v-a9294842><div class="edit-link" data-v-a9294842 data-v-49af3ad2><!----></div></div><div class="updated" data-v-a9294842><p class="last-updated" data-v-a9294842 data-v-b800ed96><span class="prefix" data-v-b800ed96>Last Updated:</span><span class="datetime" data-v-b800ed96></span></p></div></footer><!----><!--[--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"advanced_fetcher.md\":\"652a3bb4\",\"advanced_model.md\":\"a680f748\",\"changelog.md\":\"df60c7c1\",\"config_index.md\":\"a0e8f3e9\",\"core_mock.md\":\"e5a7a069\",\"core_model-setup.md\":\"45a00d94\",\"core_mpa.md\":\"6cb93413\",\"core_router.md\":\"560e8d2b\",\"guide_introduction.md\":\"55ade699\",\"guide_start.md\":\"321ea788\",\"index.md\":\"ceaf41ca\"}")</script>
+    <script type="module" async src="/assets/app.e1cf623f.js"></script>
+    
+  </body>
+</html>

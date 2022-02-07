@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>多页应用 | Veno</title>
+    <meta name="description" content="Vue and Vite Dev Kit">
+    <link rel="stylesheet" href="/assets/style.2b93322c.css">
+    <link rel="modulepreload" href="/assets/Home.3dd55162.js">
+    <link rel="modulepreload" href="/assets/app.e1cf623f.js">
+    <link rel="modulepreload" href="/assets/core_mpa.md.6cb93413.lean.js">
+    
+    <link rel="icon" type="image/svg+xml" href="/logo.png">
+  <meta name="twitter:title" content="多页应用 | Veno">
+  <meta property="og:title" content="多页应用 | Veno">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="nav-bar" data-v-5f594917><div class="sidebar-button" data-v-5f594917><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div><a class="nav-bar-title" href="/" aria-label="Veno, back to home" data-v-5f594917 data-v-100925b7><img class="logo" src="/logo.png" alt="Logo" data-v-100925b7> Veno</a><div class="flex-grow" data-v-5f594917></div><div class="nav" data-v-5f594917><nav class="nav-links" data-v-5f594917 data-v-a32cf202><!--[--><div class="item" data-v-a32cf202><div class="nav-link" data-v-a32cf202 data-v-c15a9f08><a class="item" href="/guide/introduction" data-v-c15a9f08>文档 <!----></a></div></div><div class="item" data-v-a32cf202><div class="nav-link" data-v-a32cf202 data-v-c15a9f08><a class="item" href="/config/" data-v-c15a9f08>配置 <!----></a></div></div><!--]--><!----><!----></nav></div><!--[--><!--]--></header><aside class="sidebar" data-v-26e9480e><nav class="nav-links nav" data-v-26e9480e data-v-a32cf202><!--[--><div class="item" data-v-a32cf202><div class="nav-link" data-v-a32cf202 data-v-c15a9f08><a class="item" href="/guide/introduction" data-v-c15a9f08>文档 <!----></a></div></div><div class="item" data-v-a32cf202><div class="nav-link" data-v-a32cf202 data-v-c15a9f08><a class="item" href="/config/" data-v-c15a9f08>配置 <!----></a></div></div><!--]--><!----><!----></nav><!--[--><!--]--><ul class="sidebar-links" data-v-26e9480e><!--[--><li class="sidebar-link"><p class="sidebar-link-item">起步</p><ul class="sidebar-links"><li class="sidebar-link"><a class="sidebar-link-item" href="/guide/introduction">Veno是什么</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="/guide/start">快速上手</a><!----></li></ul></li><li class="sidebar-link"><p class="sidebar-link-item">核心</p><ul class="sidebar-links"><li class="sidebar-link"><a class="sidebar-link-item" href="/core/router">路由</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item active" href="/core/mpa">多页应用</a><ul class="sidebar-links"><li class="sidebar-link"><a class="sidebar-link-item" href="#多页应用的目录结构">多页应用的目录结构</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#模板复用与自定义">模板复用与自定义</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="#更多配置">更多配置</a><!----></li></ul></li><li class="sidebar-link"><a class="sidebar-link-item" href="/core/mock">Mock 数据</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="/core/model-setup">Model Setup</a><!----></li></ul></li><!--]--></ul><!--[--><!--]--></aside><div class="sidebar-mask"></div><main class="page" data-v-25a2faf4><div class="container" data-v-25a2faf4><!--[--><!--]--><div style="position:relative;" class="content" data-v-25a2faf4><div><h1 id="多页应用" tabindex="-1">多页应用 <a class="header-anchor" href="#多页应用" aria-hidden="true">#</a></h1><p>Vite原生支持<a href="https://cn.vitejs.dev/guide/build.html#multi-page-app" target="_blank" rel="noopener noreferrer">多页应用</a>, Veno改进了他</p><p>Veno默认是单页应用, 多页应用需要使用<a href="/config/#router">配置文件</a>指定</p><div class="language-ts"><pre><code><span class="token comment">// veno.config.js</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    router<span class="token operator">:</span> <span class="token punctuation">{</span>
+        mpa<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 使用mpa模式</span>
+        filename<span class="token operator">:</span> <span class="token string">&#39;main.ts&#39;</span> <span class="token comment">// 指定使用main.ts生成路由</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="多页应用的目录结构" tabindex="-1">多页应用的目录结构 <a class="header-anchor" href="#多页应用的目录结构" aria-hidden="true">#</a></h2><div class="language-"><pre><code>src/pages/
+  ├── user/
+  │  ├── main.ts
+  ├── activity/
+  │  ├── activity-a
+  │  │  ├── main.ts
+  │  │  ├── index.html
+  │  ├── activity-b
+  │  │  ├── main.ts
+</code></pre></div><p>如上目录结构将会生成三条路由</p><ul><li><code>/user</code></li><li><code>/activity/activity-a</code></li><li><code>/activity/activity-b</code></li></ul><div class="tip custom-block"><p class="custom-block-title">提示</p><ul><li>路由可以在浏览器直接访问</li><li>可以使用<code>base</code>给路由增加前缀</li></ul></div><h2 id="模板复用与自定义" tabindex="-1">模板复用与自定义 <a class="header-anchor" href="#模板复用与自定义" aria-hidden="true">#</a></h2><p>多页应用的模板会复用根目录下的<code>index.html</code></p><p>如果某些路由需要自定义html内容, 可以在对应目录下建一个<code>index.html</code></p><div class="warning custom-block"><p class="custom-block-title">注意</p><ul><li><code>index.html</code>不需要script引入入口文件, Veno会自动处理</li></ul></div><h2 id="更多配置" tabindex="-1">更多配置 <a class="header-anchor" href="#更多配置" aria-hidden="true">#</a></h2><p>可以通过<code>mpaConfig</code>对路由进行更精细化的控制和扩展</p><div class="language-ts"><pre><code><span class="token comment">// veno.config.js</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    router<span class="token operator">:</span> <span class="token punctuation">{</span>
+        mpa<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 使用mpa模式</span>
+        filename<span class="token operator">:</span> <span class="token string">&#39;main.ts&#39;</span> <span class="token comment">// 指定使用main.ts生成路由</span>
+        mpaConfig<span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token string-property property">&#39;/user&#39;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                alias<span class="token operator">:</span> <span class="token string">&#39;/profile&#39;</span><span class="token punctuation">,</span> <span class="token comment">// 访问profile将会渲染/user</span>
+                title<span class="token operator">:</span> <span class="token string">&#39;用户主页&#39;</span><span class="token punctuation">,</span>
+                <span class="token comment">// ...</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div></div></div><footer class="page-footer" data-v-25a2faf4 data-v-a9294842><div class="edit" data-v-a9294842><div class="edit-link" data-v-a9294842 data-v-49af3ad2><!----></div></div><div class="updated" data-v-a9294842><p class="last-updated" data-v-a9294842 data-v-b800ed96><span class="prefix" data-v-b800ed96>Last Updated:</span><span class="datetime" data-v-b800ed96></span></p></div></footer><div class="next-and-prev-link" data-v-25a2faf4 data-v-178f5e5d><div class="container" data-v-178f5e5d><div class="prev" data-v-178f5e5d><a class="link" href="/core/router" data-v-178f5e5d><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" class="icon icon-prev" data-v-178f5e5d><path d="M19,11H7.4l5.3-5.3c0.4-0.4,0.4-1,0-1.4s-1-0.4-1.4,0l-7,7c-0.1,0.1-0.2,0.2-0.2,0.3c-0.1,0.2-0.1,0.5,0,0.8c0.1,0.1,0.1,0.2,0.2,0.3l7,7c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4L7.4,13H19c0.6,0,1-0.4,1-1S19.6,11,19,11z"></path></svg><span class="text" data-v-178f5e5d>路由</span></a></div><div class="next" data-v-178f5e5d><a class="link" href="/core/mock" data-v-178f5e5d><span class="text" data-v-178f5e5d>Mock 数据</span><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" class="icon icon-next" data-v-178f5e5d><path d="M19.9,12.4c0.1-0.2,0.1-0.5,0-0.8c-0.1-0.1-0.1-0.2-0.2-0.3l-7-7c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l5.3,5.3H5c-0.6,0-1,0.4-1,1s0.4,1,1,1h11.6l-5.3,5.3c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l7-7C19.8,12.6,19.9,12.5,19.9,12.4z"></path></svg></a></div></div></div><!--[--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"advanced_fetcher.md\":\"652a3bb4\",\"advanced_model.md\":\"a680f748\",\"changelog.md\":\"df60c7c1\",\"config_index.md\":\"a0e8f3e9\",\"core_mock.md\":\"e5a7a069\",\"core_model-setup.md\":\"45a00d94\",\"core_mpa.md\":\"6cb93413\",\"core_router.md\":\"560e8d2b\",\"guide_introduction.md\":\"55ade699\",\"guide_start.md\":\"321ea788\",\"index.md\":\"ceaf41ca\"}")</script>
+    <script type="module" async src="/assets/app.e1cf623f.js"></script>
+    
+  </body>
+</html>
